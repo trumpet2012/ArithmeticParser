@@ -16,9 +16,9 @@ determine if an expression containing letters, numbers, decimals, and the basic 
 + **.**
 
 The file Parser.java is the updated parser code that actually works and looks a lot cleaner. The other file ParserOld.java
-is my first attempt. It trues to implement the greibach form of the language and is unsucessful and very confusing.
+is my first attempt. It tries to implement the greibach form of the language and is unsucessful and very confusing.
 
-The language this program accepts is:
+The language Parser.java implements is:
 
 | Variable | Rule |
 | --------- | :-----------:|

@@ -1,7 +1,7 @@
 import java.util.ArrayDeque;
 
 /**
- * Created by trent on 10/31/14.
+ * Created by William Trent Holliday on 10/31/14.
  */
 public class Parser {
     /**
@@ -59,6 +59,9 @@ public class Parser {
                 token = expression.peek(); // Get next token
                 if(token != null) // null if expression has ended
                     ruleE1(token);
+            }else{
+                System.out.println(false);
+                System.exit(0);
             }
         }
     }
@@ -103,7 +106,6 @@ public class Parser {
             token = expression.peek(); // get next token
             if(token != null && token.equals(CLOSE_PAR)){ // Check for )
                 expression.pop(); // remove )
-
                 // return true since their was a opening and closing
                 // parenthesis with a valid expression between them
                 return true;
@@ -181,7 +183,7 @@ public class Parser {
     }
 
     public static void main(String[] args){
-        String testExpr = "1/1*1+(1)*(1+1)*(((1)))";
+        String testExpr = "(((1))*(1)/1)";
         expression = new ArrayDeque<Character>(); // Initialize the queue which will hold the characters
         if (args.length != 0) // Check if arguments were given
             testExpr = args[0];
@@ -189,12 +191,13 @@ public class Parser {
         for(char c : primitiveArray) {
             // This is so we do not add spaces to the queue
             if(c != ' ')
-                expression.add(c); // Convert char to Character and add to queue
+                expression.add(c); // Add character to queue
         }
+        ruleE(expression.peek()); // Begin to evaluate the given expression
 
-        while (!expression.isEmpty())
-            ruleE(expression.peek()); // Begin to evaluate the given expression
-
-        System.out.println("true"); // Will only reach this point if the expression is valid
+        if(expression.isEmpty())
+            System.out.println(true); // Expression is empty so it is valid
+        else
+            System.out.println(false); // Expression is not empty so it is invalid
     }
 }

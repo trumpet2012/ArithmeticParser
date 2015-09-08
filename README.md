@@ -9,7 +9,7 @@ determine if an expression containing letters, numbers, decimals, and the basic 
 + **)**
 + **+** 
 + **-** 
-+ **\*** 
++ \* 
 + **/** 
 + **a-zA-Z**
 + **0-9**
